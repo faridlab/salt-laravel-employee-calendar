@@ -133,4 +133,29 @@ Route::namespace('SaltEmployeeCalendar\Controllers')
     // DESTROY data by ID (id), selected IDs (selected), and All data (all)
     Route::delete("calendar_levels/{id}", 'ApiSaltResourcesController@destroy')->where('id', '[a-zA-Z0-9-]+'); // soft delete a collection by ID
 
+
+    // API: CALENDAR POSITIONS
+    Route::get("calendar_positions", 'ApiSaltResourcesController@index'); // get entire collection
+    Route::post("calendar_positions", 'ApiSaltResourcesController@store'); // create new collection
+
+    Route::get("calendar_positions/trash", 'ApiSaltResourcesController@trash'); // trash of collection
+
+    Route::post("calendar_positions/import", 'ApiSaltResourcesController@import'); // import collection from external
+    Route::post("calendar_positions/export", 'ApiSaltResourcesController@export'); // export entire collection
+    Route::get("calendar_positions/report", 'ApiSaltResourcesController@report'); // report collection
+
+    Route::get("calendar_positions/{id}/trashed", 'ApiSaltResourcesController@trashed')->where('id', '[a-zA-Z0-9-]+'); // get collection by ID from trash
+
+    // RESTORE data by ID (id), selected IDs (selected), and All data (all)
+    Route::post("calendar_positions/{id}/restore", 'ApiSaltResourcesController@restore')->where('id', '[a-zA-Z0-9-]+'); // restore collection by ID
+
+    // DELETE data by ID (id), selected IDs (selected), and All data (all)
+    Route::delete("calendar_positions/{id}/delete", 'ApiSaltResourcesController@delete')->where('id', '[a-zA-Z0-9-]+'); // hard delete collection by ID
+
+    Route::get("calendar_positions/{id}", 'ApiSaltResourcesController@show')->where('id', '[a-zA-Z0-9-]+'); // get collection by ID
+    Route::put("calendar_positions/{id}", 'ApiSaltResourcesController@update')->where('id', '[a-zA-Z0-9-]+'); // update collection by ID
+    Route::patch("calendar_positions/{id}", 'ApiSaltResourcesController@patch')->where('id', '[a-zA-Z0-9-]+'); // patch collection by ID
+    // DESTROY data by ID (id), selected IDs (selected), and All data (all)
+    Route::delete("calendar_positions/{id}", 'ApiSaltResourcesController@destroy')->where('id', '[a-zA-Z0-9-]+'); // soft delete a collection by ID
+
 });
