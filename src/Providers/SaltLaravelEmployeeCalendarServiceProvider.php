@@ -18,9 +18,9 @@ class SaltLaravelEmployeeCalendarServiceProvider extends ServiceProvider
          *
          * Uncomment this function call to make the config file publishable using the 'config' tag.
          */
-        // $this->publishes([
-        //     __DIR__.'/../../config/salt-laravel-employee-calendar.php' => config_path('salt-laravel-employee-calendar.php'),
-        // ], 'config');
+        $this->publishes([
+            __DIR__.'/../../config/salt-laravel-employee-calendar.php' => config_path('salt-laravel-employee-calendar.php'),
+        ], 'employee-calendar-config');
 
         /**
          * Routes
@@ -29,6 +29,7 @@ class SaltLaravelEmployeeCalendarServiceProvider extends ServiceProvider
          * A web.php file has already been generated.
          */
         // $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
+        $this->loadRoutesFrom(__DIR__.'/../../routes/api.php');
 
         /**
          * Translations
@@ -82,9 +83,9 @@ class SaltLaravelEmployeeCalendarServiceProvider extends ServiceProvider
          * Uncomment the second function call to make the migrations publishable using the 'migrations' tags.
          */
         // $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-        // $this->publishes([
-        //     __DIR__.'/../../database/migrations/' => database_path('migrations')
-        // ], 'migrations');
+        $this->publishes([
+            __DIR__.'/../../database/migrations/' => database_path('migrations')
+        ], 'employee-calendar-migrations');
     }
 
     /**
