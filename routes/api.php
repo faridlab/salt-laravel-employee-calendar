@@ -6,6 +6,7 @@ use SaltEmployeeCalendar\Controllers\ApiSaltResourcesController;
 // use SaltEmployeeCalendar\Controllers\ApiNestedResourcesController;
 
 use SaltEmployeeCalendar\Controllers\CalendarsController;
+use SaltEmployeeCalendar\Controllers\CalendarBranchesController;
 
 $version = config('app.API_VERSION', 'v1');
 
@@ -39,28 +40,28 @@ Route::middleware(['api'])
 
 
     // API: CALENDAR BRANCHES
-    Route::get("calendar_branches", [ApiSaltResourcesController::class, 'index'])->middleware(['auth:api']); // get entire collection
-    Route::post("calendar_branches", [ApiSaltResourcesController::class, 'store'])->middleware(['auth:api']); // create new collection
+    Route::get("calendar_branches", [CalendarBranchesController::class, 'index'])->middleware(['auth:api']); // get entire collection
+    Route::post("calendar_branches", [CalendarBranchesController::class, 'store'])->middleware(['auth:api']); // create new collection
 
-    Route::get("calendar_branches/trash", [ApiSaltResourcesController::class, 'trash'])->middleware(['auth:api']); // trash of collection
+    Route::get("calendar_branches/trash", [CalendarBranchesController::class, 'trash'])->middleware(['auth:api']); // trash of collection
 
-    Route::post("calendar_branches/import", [ApiSaltResourcesController::class, 'import'])->middleware(['auth:api']); // import collection from external
-    Route::post("calendar_branches/export", [ApiSaltResourcesController::class, 'export'])->middleware(['auth:api']); // export entire collection
-    Route::get("calendar_branches/report", [ApiSaltResourcesController::class, 'report'])->middleware(['auth:api']); // report collection
+    Route::post("calendar_branches/import", [CalendarBranchesController::class, 'import'])->middleware(['auth:api']); // import collection from external
+    Route::post("calendar_branches/export", [CalendarBranchesController::class, 'export'])->middleware(['auth:api']); // export entire collection
+    Route::get("calendar_branches/report", [CalendarBranchesController::class, 'report'])->middleware(['auth:api']); // report collection
 
-    Route::get("calendar_branches/{id}/trashed", [ApiSaltResourcesController::class, 'trashed'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID from trash
+    Route::get("calendar_branches/{id}/trashed", [CalendarBranchesController::class, 'trashed'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID from trash
 
     // RESTORE data by ID (id), selected IDs (selected), and All data (all)
-    Route::post("calendar_branches/{id}/restore", [ApiSaltResourcesController::class, 'restore'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // restore collection by ID
+    Route::post("calendar_branches/{id}/restore", [CalendarBranchesController::class, 'restore'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // restore collection by ID
 
     // DELETE data by ID (id), selected IDs (selected), and All data (all)
-    Route::delete("calendar_branches/{id}/delete", [ApiSaltResourcesController::class, 'delete'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // hard delete collection by ID
+    Route::delete("calendar_branches/{id}/delete", [CalendarBranchesController::class, 'delete'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // hard delete collection by ID
 
-    Route::get("calendar_branches/{id}", [ApiSaltResourcesController::class, 'show'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID
-    Route::put("calendar_branches/{id}", [ApiSaltResourcesController::class, 'update'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // update collection by ID
-    Route::patch("calendar_branches/{id}", [ApiSaltResourcesController::class, 'patch'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // patch collection by ID
+    Route::get("calendar_branches/{id}", [CalendarBranchesController::class, 'show'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID
+    Route::put("calendar_branches/{id}", [CalendarBranchesController::class, 'update'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // update collection by ID
+    Route::patch("calendar_branches/{id}", [CalendarBranchesController::class, 'patch'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // patch collection by ID
     // DESTROY data by ID (id), selected IDs (selected), and All data (all)
-    Route::delete("calendar_branches/{id}", [ApiSaltResourcesController::class, 'destroy'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // soft delete a collection by ID
+    Route::delete("calendar_branches/{id}", [CalendarBranchesController::class, 'destroy'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // soft delete a collection by ID
 
 
     // API: CALENDAR RELIGIONS
